@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selamat Datang di Undangan</title>
+  <title>Undangan Pernikahan Zakin & Ditha</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap');
+
     body {
       margin: 0;
       padding: 0;
@@ -12,98 +14,81 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: url('background2.jpg') center/cover no-repeat fixed;
-      font-family: 'Poppins', sans-serif;
-      color: whitesmoke;
+      flex-direction: column;
       text-align: center;
-    }
-    
-    h2 {
-      color: #a37555;
-      font-family: 'Great Vibes', cursive;
-      font-size: 40px;
-      margin-bottom: 0;
-    }
-    .overlay {
-      background: rgba(0,0,0,0.5);
-      padding: 50px;
-      border-radius: 20px;
-    }
-    .content {
-      background: rgba(255, 255, 255, 0.9);
-      max-width: 700px;
-      margin: 50px auto;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      padding: 40px 20px;
-    }
-    .music-control {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #a37555;
+      background: url('background2.jpg') center/cover no-repeat fixed;
       color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 22px;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      z-index: 10;
+      font-family: 'Poppins', sans-serif;
     }
 
-    .volume-slider {
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      transform: rotate(-90deg);
-      width: 100px;
-      accent-color: #a37555;
-      display: none;
-      z-index: 9;
+    .overlay {
+      background: rgba(0,0,0,0.55);
+      padding: 60px 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
     }
 
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 60px;
-      margin-bottom: 20px;
+      margin: 0;
+      color: #f7e3d3;
     }
 
-    p {
-      font-size: 18px;
-      margin-bottom: 30px;
+    h3 {
+      font-size: 20px;
+      margin: 10px 0 30px;
+      font-weight: normal;
     }
 
-    a {
-      display: inline-block;
+    #guestName {
+      font-size: 22px;
+      color: #f1c6a5;
+      margin-bottom: 25px;
+    }
+
+    button {
       background: #a37555;
       color: white;
       padding: 15px 30px;
+      border: none;
       border-radius: 15px;
-      text-decoration: none;
-      font-weight: bold;
       font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
       transition: 0.3s;
     }
 
-    a:hover {
+    button:hover {
       background: #8b5e3c;
+      transform: scale(1.05);
     }
-
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="overlay">
-    <h1>Undangan Pernikahan</h1>
-    <h2>
-        Zakin 
-        & 
-        Ditha
-    </h2> 
-    <p>Selamat datang, klik tombol di bawah untuk membuka undangan</p>
-    <a href="undangan.html">Buka Undangan</a>
+    <h1>Zakin & Ditha</h1>
+    <h3>Undangan Pernikahan</h3>
+    <p id="guestName"></p>
+    <button id="openBtn">💌 Buka Undangan</button>
   </div>
+
+  <script>
+    // Ambil nama dari URL (?to=Nama)
+    const params = new URLSearchParams(window.location.search);
+    const guest = params.get("to");
+
+    const guestName = document.getElementById("guestName");
+    if (guest) {
+      guestName.innerText = `Kepada Yth. ${decodeURIComponent(guest)}`;
+    } else {
+      guestName.innerText = "Kepada Yth. Tamu Undangan";
+    }
+
+    // Tombol buka undangan → pindah ke halaman utama
+    document.getElementById("openBtn").addEventListener("click", () => {
+      window.location.href = "wedding.html?to=" + encodeURIComponent(guest || "");
+    });
+  </script>
 </body>
 </html>
