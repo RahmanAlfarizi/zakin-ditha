@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Pernikahan Zakin & Ditha</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #f7f2ec, #fff);
+      margin: 0;
+      padding: 0;
+      color: #333;
+      text-align: center;
+      scroll-behavior: smooth;
+    }
+
+    .header {
+      background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      padding: 120px 20px;
+      color: white;
+      position: relative;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .header h1, .header p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 56px;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 20px;
+    }
+
+    .content {
+      background: #ffffff;
+      max-width: 700px;
+      margin: -50px auto 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      padding: 40px 20px;
+    }
+
+    .bismillah {
+      font-size: 26px;
+      font-family: 'Scheherazade New', serif;
+      margin-bottom: 10px;
+      color: #7b5a3f;
+    }
+
+    h2 {
+      color: #a37555;
+      font-family: 'Great Vibes', cursive;
+      font-size: 40px;
+      margin-bottom: 0;
+    }
+
+    .date {
+      background: #a37555;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 20px;
+      display: inline-block;
+      margin: 20px 0;
+      font-size: 18px;
+    }
+
+    a {
+      background: #a37555;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    a:hover {
+      background: #8b5e3c;
+    }
+
+    /* Countdown */
+    #countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+      color: #7b5a3f;
+    }
+    #countdown div {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Galeri */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      font-size: 14px;
+      color: #888;
+      margin-top: 30px;
+    }
+
+    /* Tombol musik & volume */
+    .music-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #a37555;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    .volume-slider {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      transform: rotate(-90deg);
+      width: 100px;
+      accent-color: #a37555;
+      display: none;
+      z-index: 9;
+    }
+
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&family=Scheherazade+New&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="header">
+    <h1>Pernikahan Zakin & Ditha</h1>
+    <p>1 November 2025</p>
+  </div>
+
+  <div class="content">
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+    <p>Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
+    <p>Dengan memohon rahmat dan ridha Allah Subhanahu wa Ta’ala, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami.</p>
+
+    <h2>Zakin & Ditha</h2>
+    <p>yang, In syaa Allah, akan diselenggarakan pada:</p>
+
+    <div class="date">Sabtu, 1 November 2025</div>
+    <p><strong>Lokasi:</strong><br>West One City<br>Jakarta Barat</p>
+
+    <div id="countdown">
+      <div><span id="days">0</span> Hari</div>
+      <div><span id="hours">0</span> Jam</div>
+      <div><span id="minutes">0</span> Menit</div>
+      <div><span id="seconds">0</span> Detik</div>
+    </div>
+
+    <a id="mapsLink" href="https://maps.app.goo.gl/aigDg2KhQb9A6Q3w5" target="_blank">📍 Lihat Lokasi</a>
+
+    <div class="gallery">
+      <img src="Zakin & Ditha.jpg" alt="Foto 1">
+    </div>
+
+    <p>Wassalamu’alaikum Warahmatullahi Wabarakatuh</p>
+
+    <footer>© 2025 Zakin & Ditha Wedding | Semua hak dilindungi</footer>
+  </div>
+
+  <!-- Musik Latar -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="Maher Zain - Baraka Allahu Lakuma - Nasheed Star.mp3" type="audio/mpeg">
+  </audio>
+  <button class="music-control" id="musicBtn">▶️</button>
+  <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.05" value="0.5">
+
+  <script>
+    // Countdown Timer
+    const weddingDate = new Date("Nov 1, 2025 09:00:00").getTime();
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "Acara sedang berlangsung 💍";
+      }
+    }, 1000);
+
+    // Musik kontrol
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicBtn");
+    const volumeSlider = document.getElementById("volumeSlider");
+    const mapsLink = document.getElementById("mapsLink");
+
+    let playing = false;
+    let fadeInterval;
+
+    // Fade-in effect
+    function fadeIn(audio, duration = 3000) {
+      audio.volume = 0;
+      const step = 0.05;
+      const interval = duration / (1 / step);
+      fadeInterval = setInterval(() => {
+        if (audio.volume < 0.5) {
+          audio.volume = Math.min(audio.volume + step, 0.5);
+        } else {
+          clearInterval(fadeInterval);
+        }
+      }, interval);
+    }
+
+    // Klik pertama di halaman → mulai musik
+    document.addEventListener("click", () => {
+      if (!playing) {
+        music.play().then(() => {
+          fadeIn(music);
+          btn.textContent = "⏸️";
+          playing = true;
+        }).catch(err => console.log("Autoplay diblokir:", err));
+      }
+    }, { once: true });
+
+    // Tombol kontrol musik
+    btn.addEventListener("click", () => {
+      if (playing) {
+        music.pause();
+        btn.textContent = "▶️";
+        playing = false;
+        volumeSlider.style.display = "none";
+      } else {
+        music.play();
+        fadeIn(music);
+        btn.textContent = "⏸️";
+        playing = true;
+        volumeSlider.style.display = "block";
+      }
+    });
+
+    // Slider volume
+    volumeSlider.addEventListener("input", () => {
+      music.volume = volumeSlider.value;
+    });
+
+    // Tampilkan/ sembunyikan volume slider saat hover tombol musik
+    btn.addEventListener("mouseenter", () => {
+      if (playing) volumeSlider.style.display = "block";
+    });
+    btn.addEventListener("mouseleave", () => {
+      setTimeout(() => volumeSlider.style.display = "none", 1000);
+    });
+
+    // Stop musik saat buka link lokasi
+    mapsLink.addEventListener("click", () => {
+      music.pause();
+      btn.textContent = "▶️";
+      playing = false;
+    });
+
+    // Deteksi error
+    music.addEventListener("error", () => {
+      alert("⚠️ Musik gagal dimuat. Pastikan file MP3 ada di folder yang sama dengan index.html");
+    });
+  </script>
+
+</body>
+</html>
