@@ -132,17 +132,6 @@
         z-index: 1001;
       }
 
-      .volume-slider {
-        position: fixed;
-        bottom: 170px;
-        right: 30px;
-        transform: rotate(-90deg);
-        width: 100px;
-        accent-color: #a37555;
-        display: none;
-        z-index: 1000;
-      }
-
       .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -215,7 +204,7 @@
         <p>Kp. Duri, Jl.Timbul Jaya RT.10/RW.004 no.36 Kel. Duri Kosambi Kec. Cengkareng, Jakarta Barat</p>
       </div>
 
-      <div class="date">
+      <div id="acara" class="date">
         <h1>Resepsi</h1>
         <p>Sabtu, 1 November 2025</p>
         <p>09:00</p>
@@ -264,12 +253,12 @@
     <source src="Maher Zain - Baraka Allahu Lakuma - Nasheed Star.mp3" type="audio/mpeg">
   </audio>
   <button class="music-control" id="musicBtn">▶️</button>
-  <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.05" value="0.5">
 
   <!-- Navigasi Bawah -->
   <div class="bottom-nav">
     <a href="#ayatpembuka">📖</a>
     <a href="#invite">💌</a>
+    <a href="#acara">📅</a>
     <a href="#lokasi">📍</a>
     <a href="#gift">🎁</a>
     <a href="#quote">💬</a>
@@ -328,7 +317,6 @@
     // Musik kontrol
     const music = document.getElementById("bgMusic");
     const btn = document.getElementById("musicBtn");
-    const volumeSlider = document.getElementById("volumeSlider");
     const mapsLink = document.getElementById("mapsLink");
     let playing = false;
     let fadeInterval;
@@ -371,17 +359,6 @@
       }
     });
 
-    volumeSlider.addEventListener("input", () => {
-      music.volume = volumeSlider.value;
-    });
-
-    btn.addEventListener("mouseenter", () => {
-      if (playing) volumeSlider.style.display = "block";
-    });
-    btn.addEventListener("mouseleave", () => {
-      setTimeout(() => volumeSlider.style.display = "none", 1000);
-    });
-
     mapsLink.addEventListener("click", () => {
       music.pause();
       btn.textContent = "▶️";
@@ -410,5 +387,6 @@
 
 </body>
 </html>
+
 
 
