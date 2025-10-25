@@ -11,7 +11,7 @@
        padding: 0;
        color: #333;
        text-align: center;
-       scroll-behavior: smooth;
+       scroll-behavior: smooth; /* fallback smooth scroll */
        background: url('background2.jpg') center center / cover no-repeat fixed;
        opacity: 0;
        animation: fadeInWedding 1.8s ease forwards;
@@ -26,21 +26,6 @@
        font-family: 'Great Vibes', cursive;
        margin-bottom: 20px;
        color: #a37555;
-     }
- 
-     .header h1, .header p {
-       position: relative;
-       z-index: 1;
-     }
- 
-     .header h1 {
-       font-family: 'Great Vibes', cursive;
-       font-size: 56px;
-       margin-bottom: 10px;
-     }
- 
-     .header p {
-       font-size: 20px;
      }
  
      .content {
@@ -133,7 +118,7 @@
      /* Tombol musik & volume */
      .music-control {
         position: fixed;
-        bottom: 90px; /* dinaikkan agar tidak tertutup nav */
+        bottom: 90px; 
         right: 20px;
         background: #a37555;
         color: white;
@@ -144,13 +129,12 @@
         font-size: 22px;
         cursor: pointer;
         box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        z-index: 1001; /* pastikan di atas elemen lain */
+        z-index: 1001;
       }
 
- 
       .volume-slider {
         position: fixed;
-        bottom: 170px; /* ikut naik */
+        bottom: 170px;
         right: 30px;
         transform: rotate(-90deg);
         width: 100px;
@@ -239,44 +223,41 @@
         <p>Jl. Timbul Jaya, Rt09/Rw04, Duri Kosambi, Kecamatan Cengkareng, Kota Jakarta Barat</p>
       </div>
       <div id="countdown">
-              <div><span id="days">0</span> Hari</div>
-              <div><span id="hours">0</span> Jam</div>
-              <div><span id="minutes">0</span> Menit</div>
-              <div><span id="seconds">0</span> Detik</div>
-            </div>
+        <div><span id="days">0</span> Hari</div>
+        <div><span id="hours">0</span> Jam</div>
+        <div><span id="minutes">0</span> Menit</div>
+        <div><span id="seconds">0</span> Detik</div>
+      </div>
   </div>
 
-    <div id="lokasi" class="content">
-      <h2>Alamat</h2>
-      <div style="margin-top: 20px;">
-        <img src="maps.png" alt="Peta Lokasi" style="width: 100%; max-width: 600px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-      </div>
-      <p></p><strong>Lokasi:</strong><br>Warung Sembako BERKAH MANDIRI<br></p>
+  <div id="lokasi" class="content">
+    <h2>Alamat</h2>
+    <div style="margin-top: 20px;">
+      <img src="maps.png" alt="Peta Lokasi" style="width: 100%; max-width: 600px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+    </div>
+    <p></p><strong>Lokasi:</strong><br>Warung Sembako BERKAH MANDIRI<br></p>
 
-      <a id="mapsLink" href="https://maps.app.goo.gl/Y7RzDsqbxPQ61jvp6" target="_blank">📍 Lihat Lokasi</a>
-      
-    </div>
-  
-  
-    <div id="gift" class="content">
-      <h2>Tanda Kasih</h2>
-      <p>Kami Harapkan Kehadiran Bapak/Ibu/Saudara/i serta kerabat sekalian, Terima Kasih</p>
-      <p>Doa restu Anda merupakan hadiah terindah bagi kami.  
-        Namun jika berkenan memberi tanda kasih, dapat melalui:</p>
-      <p><strong>🏦 BCA 1234567890 - Zakin Shiddiq</strong></p>
-    </div>
-    </div>
+    <a id="mapsLink" href="https://maps.app.goo.gl/Y7RzDsqbxPQ61jvp6" target="_blank">📍 Lihat Lokasi</a>
+  </div>
 
+  <div id="gift" class="content">
+    <h2>Tanda Kasih</h2>
+    <p>Kami Harapkan Kehadiran Bapak/Ibu/Saudara/i serta kerabat sekalian, Terima Kasih</p>
+    <p>Doa restu Anda merupakan hadiah terindah bagi kami.  
+      Namun jika berkenan memberi tanda kasih, dapat melalui:</p>
+    <p><strong>🏦 BCA 1234567890 - Zakin Shiddiq</strong></p>
+  </div>
 
   <div id="quote" class="content">
-      <h2>Photo</h2>
-      <p><strong>“Aku tidak mencari seseorang yang sempurna, tapi seseorang yang mau berjuang bersama menuju kesempurnaan cinta.”</strong></p>
-      <div class="gallery">
-        <img src="Zakin & Ditha.jpg" alt="Foto 1">
-        <img src="Zakin & Ditha 2.jpg" alt="Foto 2">
+    <h2>Photo</h2>
+    <p><strong>“Aku tidak mencari seseorang yang sempurna, tapi seseorang yang mau berjuang bersama menuju kesempurnaan cinta.”</strong></p>
+    <div class="gallery">
+      <img src="Zakin & Ditha.jpg" alt="Foto 1">
+      <img src="Zakin & Ditha 2.jpg" alt="Foto 2">
+    </div>
   </div>
 
- <footer>© 2025 Zakin & Ditha Wedding | Semua hak dilindungi</footer>
+  <footer>© 2025 Zakin & Ditha Wedding | Semua hak dilindungi</footer>
 
   <!-- Musik Latar -->
   <audio id="bgMusic" loop preload="auto">
@@ -295,15 +276,12 @@
   </div>
 
   <script>
-
-    // Tampilkan nama tamu di halaman utama
+    // Nama tamu
     const urlParams = new URLSearchParams(window.location.search);
     const guestMain = urlParams.get("to");
     if (guestMain) {
       document.getElementById("guest").innerText = `Kepada Yth. ${decodeURIComponent(guestMain)}`;
     }
-
-    
 
     // Countdown Timer
     const weddingDate = new Date("Nov 1, 2025 08:00:00").getTime();
@@ -332,11 +310,9 @@
     const btn = document.getElementById("musicBtn");
     const volumeSlider = document.getElementById("volumeSlider");
     const mapsLink = document.getElementById("mapsLink");
-
     let playing = false;
     let fadeInterval;
 
-    // Fade-in effect
     function fadeIn(audio, duration = 3000) {
       audio.volume = 0;
       const step = 0.05;
@@ -350,7 +326,6 @@
       }, interval);
     }
 
-    // Klik pertama di halaman → mulai musik
     document.addEventListener("click", () => {
       if (!playing) {
         music.play().then(() => {
@@ -361,7 +336,6 @@
       }
     }, { once: true });
 
-    // Tombol kontrol musik
     btn.addEventListener("click", () => {
       if (playing) {
         music.pause();
@@ -377,12 +351,10 @@
       }
     });
 
-    // Slider volume
     volumeSlider.addEventListener("input", () => {
       music.volume = volumeSlider.value;
     });
 
-    // Tampilkan/ sembunyikan volume slider saat hover tombol musik
     btn.addEventListener("mouseenter", () => {
       if (playing) volumeSlider.style.display = "block";
     });
@@ -390,19 +362,31 @@
       setTimeout(() => volumeSlider.style.display = "none", 1000);
     });
 
-    // Stop musik saat buka link lokasi
     mapsLink.addEventListener("click", () => {
       music.pause();
       btn.textContent = "▶️";
       playing = false;
     });
 
-    // Deteksi error
     music.addEventListener("error", () => {
       alert("⚠️ Musik gagal dimuat. Pastikan file MP3 ada di folder yang sama dengan index.html");
+    });
+
+    // Smooth scroll untuk navigasi bawah
+    document.querySelectorAll('.bottom-nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          window.scrollTo({
+            top: targetEl.offsetTop - 20,
+            behavior: 'smooth'
+          });
+        }
+      });
     });
   </script>
 
 </body>
 </html>
-
