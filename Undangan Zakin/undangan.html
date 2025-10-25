@@ -5,218 +5,276 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Undangan Pernikahan Zakin & Ditha</title>
   <style>
-   body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #333;
-      text-align: center;
-      scroll-behavior: smooth;
+    body {
+       font-family: 'Poppins', sans-serif;
+       margin: 0;
+       padding: 0;
+       color: #333;
+       text-align: center;
+       scroll-behavior: smooth;
+       background: url('background2.jpg') center center / cover no-repeat fixed;
+       opacity: 0;
+       animation: fadeInWedding 1.8s ease forwards;
+     }
+ 
+     @keyframes fadeInWedding {
+       to { opacity: 1; }
+     }
+ 
+     .main-title {
+       font-size: 70px;
+       font-family: 'Great Vibes', cursive;
+       margin-bottom: 20px;
+       color: #a37555;
+     }
+ 
+     .header h1, .header p {
+       position: relative;
+       z-index: 1;
+     }
+ 
+     .header h1 {
+       font-family: 'Great Vibes', cursive;
+       font-size: 56px;
+       margin-bottom: 10px;
+     }
+ 
+     .header p {
+       font-size: 20px;
+     }
+ 
+     .content {
+       background: rgba(255, 255, 255, 0.9);
+       max-width: 700px;
+       margin: 50px auto;
+       border-radius: 20px;
+       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+       padding: 40px 20px;
+     }
+ 
+     .ayat, .bismillah {
+       font-size: 26px;
+       font-family: 'Scheherazade New', serif;
+       margin-bottom: 10px;
+       color: #7b5a3f;
+     }
+ 
+     h2 {
+       color: #a37555;
+       font-family: 'Great Vibes', cursive;
+       font-size: 40px;
+       margin-bottom: 0;
+     }
+ 
+     .date {
+       background: #a37555;
+       color: white;
+       padding: 10px 25px;
+       border-radius: 20px;
+       display: inline-block;
+       margin: 20px 0;
+       font-size: 18px;
+     }
+ 
+     a {
+       background: #a37555;
+       color: white;
+       padding: 10px 20px;
+       border-radius: 15px;
+       text-decoration: none;
+       font-weight: bold;
+       display: inline-block;
+       margin-top: 15px;
+     }
+ 
+     a:hover {
+       background: #8b5e3c;
+     }
+ 
+     /* Countdown */
+     #countdown {
+       display: flex;
+       justify-content: center;
+       gap: 20px;
+       margin: 20px 0;
+       color: #7b5a3f;
+     }
+ 
+     #countdown div {
+       font-size: 20px;
+       font-weight: bold;
+     }
+ 
+     /* Galeri */
+     .gallery {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+       gap: 10px;
+       margin-top: 30px;
+     }
+ 
+     .gallery img {
+       width: 100%;
+       border-radius: 15px;
+       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+       transition: transform 0.3s;
+     }
+ 
+     .gallery img:hover {
+       transform: scale(1.05);
+     }
+ 
+     footer {
+       font-size: 14px;
+       color: #888;
+       margin-top: 30px;
+     }
+ 
+     /* Tombol musik & volume */
+     .music-control {
+        position: fixed;
+        bottom: 90px; /* dinaikkan agar tidak tertutup nav */
+        right: 20px;
+        background: #a37555;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 22px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        z-index: 1001; /* pastikan di atas elemen lain */
+      }
 
-      /* Background full-page */
-      background: url('background2.jpg') center center / cover no-repeat fixed;
-    }
+ 
+      .volume-slider {
+        position: fixed;
+        bottom: 170px; /* ikut naik */
+        right: 30px;
+        transform: rotate(-90deg);
+        width: 100px;
+        accent-color: #a37555;
+        display: none;
+        z-index: 1000;
+      }
 
-    .main-title {
-      font-size: 70px;           /* ukuran besar seperti judul */
-      font-family: 'Great Vibes', cursive;
-      margin-bottom: 20px;
-      color: #a37555;
-    }
-    .header h1, .header p {
-      position: relative;
-      z-index: 1;
-    }
-
-    .header h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 56px;
-      margin-bottom: 10px;
-    }
-
-    .header p {
-      font-size: 20px;
-    }
-
-    .content {
+      .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
       background: rgba(255, 255, 255, 0.9);
-      max-width: 700px;
-      margin: 50px auto;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      padding: 40px 20px;
-    }
-
-
-    .ayat{
-      font-size: 26px;
-      font-family: 'Scheherazade New', serif;
-      margin-bottom: 10px;
-      color: #7b5a3f;
-    }
-
-    .bismillah {
-      font-size: 26px;
-      font-family: 'Scheherazade New', serif;
-      margin-bottom: 10px;
-      color: #7b5a3f;
-    }
-
-    h2 {
-      color: #a37555;
-      font-family: 'Great Vibes', cursive;
-      font-size: 40px;
-      margin-bottom: 0;
-    }
-
-    .date {
-      background: #a37555;
-      color: white;
-      padding: 10px 25px;
-      border-radius: 20px;
-      display: inline-block;
-      margin: 20px 0;
-      font-size: 18px;
-    }
-
-    a {
-      background: #a37555;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 15px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 15px;
-    }
-
-    a:hover {
-      background: #8b5e3c;
-    }
-
-    /* Countdown */
-    #countdown {
+      backdrop-filter: blur(8px);
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin: 20px 0;
-      color: #7b5a3f;
-    }
-    #countdown div {
-      font-size: 20px;
-      font-weight: bold;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 0;
+      border-top: 1px solid #d8c3b0;
+      z-index: 999;
     }
 
-    /* Galeri */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
-      margin-top: 30px;
+    .bottom-nav a {
+      text-decoration: none;
+      font-size: 24px;
+      color: #a37555;
+      transition: transform 0.2s, color 0.2s;
     }
 
-    .gallery img {
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+    .bottom-nav a:hover {
+      transform: scale(1.2);
+      color: #8b5e3c;
     }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    footer {
-      font-size: 14px;
-      color: #888;
-      margin-top: 30px;
-    }
-
-    /* Tombol musik & volume */
-    .music-control {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #a37555;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 22px;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      z-index: 10;
-    }
-
-    .volume-slider {
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      transform: rotate(-90deg);
-      width: 100px;
-      accent-color: #a37555;
-      display: none;
-      z-index: 9;
-    }
-
-  </style>
+ </style>
+ 
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&family=Scheherazade+New&display=swap" rel="stylesheet">
 </head>
 <body>
     <h2 class="main-title">Zakin & Ditha</h2> 
+    <p id="guest" style="font-size:18px; color:#7b5a3f; margin-top:-10px;"></p>
 
-  <div class="content"> 
-    
-    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
-    <p>Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
-
-
+  <div id="ayatpembuka" class="content"> 
+    <h2>Ayat Pembuka</h2>
     <div class="ayat">وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِى ذَٰلِكَ لَءَايَٰتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</div>
     <p>
       Artinya: "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir."
     </p>
+  </div>
 
-    
+  <div id="invite" class="content">
+    <h2>Undangan</h2>
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+    <p>Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
     <p>Atas Berkah dan Rahmat Tuhan Yang Maha Esa. Tanpa mengurangi rasa hormat. Kami mengundang Bapak/Ibu/Saudara/i serta kerabat sekalian untuk menghadiri acara pernikahan kami :</p>
 
     <h2>Muhammad Razin Zakin Shiddiq</h2>
-    <h2>(Zakin)</h2>
-    <p>(Putra pertama dari Bapak Sutrisno dan Ibu Ida Suharti)</p>
+      <h2>(Zakin)</h2>
+    <p>(Anak pertama dari dari Bapak Sutrisno dan Ibu Ida Suharti)</p>
 
     <p>Dengan</p>
 
     <h2>Ditha Diapriyani</h2>
-    <h2>(Ditha)</h2>
-    <p>(Putri Ke-4 dari Bapak Sofian Sauri dan Ibu Muhiyah)</p>
-
-    <p>yang, In syaa Allah, akan diselenggarakan pada:</p>
-
-    <div class="date">Sabtu, 1 November 2025</div>
-
-    <p></p><strong>Lokasi:</strong><br>Warung Sembako BERKAH MANDIRI<br></p>
-
-    <div id="countdown">
-      <div><span id="days">0</span> Hari</div>
-      <div><span id="hours">0</span> Jam</div>
-      <div><span id="minutes">0</span> Menit</div>
-      <div><span id="seconds">0</span> Detik</div>
-    </div>
-
-    <a id="mapsLink" href="https://maps.app.goo.gl/Pu8baYADuHcJU7oX6" target="_blank">📍 Lihat Lokasi</a>
-
-
-
-    <h2>Photo</h2>
-    <div class="gallery">
-      <img src="Zakin & Ditha.jpg" alt="Foto 1">
-      <img src="Zakin & Ditha 2.jpg" alt="Foto 2">
-    </div>
-
-    <p>Wassalamu’alaikum Warahmatullahi Wabarakatuh</p>
-
-    <footer>© 2025 Zakin & Ditha Wedding | Semua hak dilindungi</footer>
+      <h2>(Ditha)</h2>
+    
+    <p>(Anak Ke-4 dari Bapak Sofian Sauri dan Ibu Muhiyah)</p>
   </div>
+
+  <div class="content">
+    <h2>Acara</h2>
+      <p>Insyaa Allah, akan diselenggarakan pada:</p>
+
+      <div class="date">
+        <h1>Akad Nikah</h1>
+        <p>Sabtu, 1 November 2025</p>
+        <p>Kediaman Mempelai Wanita</p>
+        <p>Jl. Timbul Jaya, Rt09/Rw04, Duri Kosambi, Kecamatan Cengkareng, Kota Jakarta Barat</p>
+      </div>
+
+      <div class="date">
+        <h1>Resepsi</h1>
+        <p>Sabtu, 1 November 2025</p>
+        <p>Warung Sembako BERKAH MANDIRI</p>
+        <p>Jl. Timbul Jaya, Rt09/Rw04, Duri Kosambi, Kecamatan Cengkareng, Kota Jakarta Barat</p>
+      </div>
+      <div id="countdown">
+              <div><span id="days">0</span> Hari</div>
+              <div><span id="hours">0</span> Jam</div>
+              <div><span id="minutes">0</span> Menit</div>
+              <div><span id="seconds">0</span> Detik</div>
+            </div>
+  </div>
+
+    <div id="lokasi" class="content">
+      <h2>Alamat</h2>
+      <div style="margin-top: 20px;">
+        <img src="maps.png" alt="Peta Lokasi" style="width: 100%; max-width: 600px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+      </div>
+      <p></p><strong>Lokasi:</strong><br>Warung Sembako BERKAH MANDIRI<br></p>
+
+      <a id="mapsLink" href="https://maps.app.goo.gl/Pu8baYADuHcJU7oX6" target="_blank">📍 Lihat Lokasi</a>
+      
+    </div>
+  
+  
+    <div id="gift" class="content">
+      <h2>Tanda Kasih</h2>
+      <p>Kami Harapkan Kehadiran Bapak/Ibu/Saudara/i serta kerabat sekalian, Terima Kasih</p>
+      <p>Doa restu Anda merupakan hadiah terindah bagi kami.  
+        Namun jika berkenan memberi tanda kasih, dapat melalui:</p>
+      <p><strong>🏦 BCA 1234567890 - Zakin Shiddiq</strong></p>
+    </div>
+    </div>
+
+
+  <div id="quote" class="content">
+      <h2>Photo</h2>
+      <p><strong>“Aku tidak mencari seseorang yang sempurna, tapi seseorang yang mau berjuang bersama menuju kesempurnaan cinta.”</strong></p>
+      <div class="gallery">
+        <img src="Zakin & Ditha.jpg" alt="Foto 1">
+        <img src="Zakin & Ditha 2.jpg" alt="Foto 2">
+  </div>
+
+ <footer>© 2025 Zakin & Ditha Wedding | Semua hak dilindungi</footer>
 
   <!-- Musik Latar -->
   <audio id="bgMusic" loop preload="auto">
@@ -225,7 +283,27 @@
   <button class="music-control" id="musicBtn">▶️</button>
   <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.05" value="0.5">
 
+  <!-- Navigasi Bawah -->
+  <div class="bottom-nav">
+    <a href="#ayatpembuka">📖</a>
+    <a href="#lovestory">💞</a>
+    <a href="#invite">💌</a>
+    <a href="#lokasi">📍</a>
+    <a href="#gift">🎁</a>
+    <a href="#quote">💬</a>
+  </div>
+
   <script>
+
+    // Tampilkan nama tamu di halaman utama
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestMain = urlParams.get("to");
+    if (guestMain) {
+      document.getElementById("guest").innerText = `Kepada Yth. ${decodeURIComponent(guestMain)}`;
+    }
+
+    
+
     // Countdown Timer
     const weddingDate = new Date("Nov 1, 2025 09:00:00").getTime();
     const countdown = setInterval(() => {
@@ -326,8 +404,3 @@
 
 </body>
 </html>
-
-
-
-
-
