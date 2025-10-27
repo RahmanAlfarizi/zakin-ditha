@@ -242,12 +242,33 @@
   </div>
 
   <div id="gift" class="content">
-    <h2>Tanda Kasih</h2>
-    <p>Kami Harapkan Kehadiran Bapak/Ibu/Saudara/i serta kerabat sekalian, Terima Kasih</p>
-    <p>Doa restu Anda merupakan hadiah terindah bagi kami.  
-      Namun jika berkenan memberi tanda kasih, dapat melalui:</p>
-    <p><strong> 31223043957 - Bank DKI a.n. Zakin Shiddiq</strong></p>
+  <h2>Tanda Kasih</h2>
+  <p>Doa restu Anda merupakan hadiah terindah bagi kami.  
+    Namun jika berkenan memberi tanda kasih, dapat melalui:</p>
+  <p><strong>31223043957 - Bank DKI a.n. Zakin Shiddiq</strong></p>
+
+  <hr style="margin: 30px 0; border: none; border-top: 1px solid #d8c3b0;">
+
+  <h3 style="color:#a37555;">💌 Kirim Ucapan</h3>
+  <form id="ucapanForm" style="margin-top: 15px;">
+    <input type="text" id="namaUcapan" placeholder="Nama Anda" required 
+           style="width:90%; max-width:400px; padding:10px; margin:5px; border:1px solid #d8c3b0; border-radius:10px;">
+    <br>
+    <textarea id="pesanUcapan" placeholder="Tulis ucapan Anda..." required 
+              style="width:90%; max-width:400px; height:80px; padding:10px; margin:5px; border:1px solid #d8c3b0; border-radius:10px;"></textarea>
+    <br>
+    <button type="submit" 
+            style="background:#a37555; color:white; border:none; padding:10px 20px; border-radius:10px; cursor:pointer;">
+      Kirim 💌
+    </button>
+  </form>
+
+  <div id="daftarUcapan" style="margin-top:25px; text-align:left; max-width:600px; margin-left:auto; margin-right:auto;">
+    <h4 style="color:#a37555; text-align:center;">Ucapan dari Tamu</h4>
+    <div id="ucapanList"></div>
   </div>
+</div>
+
 
   <div id="quote" class="content">
     <h2>Photo</h2>
@@ -410,10 +431,66 @@
         }
       });
     });
+
+    // =====================
+// FITUR UCAPAN TAMU
+// =====================
+const formUcapan = document.getElementById("ucapanForm");
+const listUcapan = document.getElementById("ucapanList");
+
+// Ambil ucapan tersimpan dari localStorage
+let ucapanTersimpan = JSON.parse(localStorage.getItem("ucapanTamu")) || [];
+
+// Fungsi tampilkan ucapan
+function tampilkanUcapan() {
+  listUcapan.innerHTML = "";
+  if (ucapanTersimpan.length === 0) {
+    listUcapan.innerHTML = "<p style='text-align:center; color:#888;'>Belum ada ucapan 💬</p>";
+    return;
+  }
+
+  ucapanTersimpan.forEach(u => {
+    const div = document.createElement("div");
+    div.style.background = "rgba(255,255,255,0.8)";
+    div.style.border = "1px solid #e0d2c3";
+    div.style.borderRadius = "10px";
+    div.style.padding = "10px 15px";
+    div.style.marginBottom = "10px";
+    div.style.boxShadow = "0 2px 6px rgba(0,0,0,0.05)";
+    div.innerHTML = `<strong style="color:#a37555;">${u.nama}</strong><br><span>${u.pesan}</span>`;
+    listUcapan.appendChild(div);
+  });
+}
+
+// Saat form disubmit
+formUcapan.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const nama = document.getElementById("namaUcapan").value.trim();
+  const pesan = document.getElementById("pesanUcapan").value.trim();
+
+  if (!nama || !pesan) return;
+
+  const dataBaru = { nama, pesan };
+  ucapanTersimpan.push(dataBaru);
+
+  // Simpan ke localStorage
+  localStorage.setItem("ucapanTamu", JSON.stringify(ucapanTersimpan));
+
+  // Reset form
+  formUcapan.reset();
+
+  // Tampilkan ulang
+  tampilkanUcapan();
+});
+
+// Tampilkan saat pertama kali halaman dimuat
+tampilkanUcapan();
+
   </script>
 
 </body>
 </html>
+
 
 
 
