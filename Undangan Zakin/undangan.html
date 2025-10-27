@@ -315,9 +315,9 @@
     }, 1000);
 
     // Musik kontrol
+    <!-- Musik kontrol otomatis -->
     const music = document.getElementById("bgMusic");
     const btn = document.getElementById("musicBtn");
-    const mapsLink = document.getElementById("mapsLink");
     let playing = false;
     let fadeInterval;
 
@@ -334,37 +334,52 @@
       }, interval);
     }
 
+    // 🎵 Coba otomatis main saat halaman dimuat
+    window.addEventListener("load", () => {
+      music.play().then(() => {
+        fadeIn(music);
+        btn.textContent = "⏸️";
+        playing = true;
+      }).catch(() => {
+        console.log("Autoplay diblokir. Musik akan diputar setelah interaksi pertama.");
+      });
+    });
+
+    // Jika autoplay gagal, aktifkan saat pertama kali klik layar
     document.addEventListener("click", () => {
       if (!playing) {
         music.play().then(() => {
           fadeIn(music);
           btn.textContent = "⏸️";
           playing = true;
-        }).catch(err => console.log("Autoplay diblokir:", err));
+        });
       }
     }, { once: true });
 
+    // Tombol play/pause
     btn.addEventListener("click", () => {
       if (playing) {
         music.pause();
         btn.textContent = "▶️";
         playing = false;
-        volumeSlider.style.display = "none";
       } else {
         music.play();
         fadeIn(music);
         btn.textContent = "⏸️";
         playing = true;
-        volumeSlider.style.display = "block";
       }
     });
 
-    mapsLink.addEventListener("click", () => {
-      music.pause();
-      btn.textContent = "▶️";
-      playing = false;
+    // Berhenti saat klik link Maps
+    document.getElementById("mapsLink").addEventListener("click", () => {
+      if (playing) {
+        music.pause();
+        btn.textContent = "▶️";
+        playing = false;
+      }
     });
 
+    // Error handling
     music.addEventListener("error", () => {
       alert("⚠️ Musik gagal dimuat. Pastikan file MP3 ada di folder yang sama dengan index.html");
     });
@@ -387,6 +402,7 @@
 
 </body>
 </html>
+
 
 
 
