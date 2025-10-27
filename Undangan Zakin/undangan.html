@@ -298,23 +298,76 @@
     document.getElementById("seconds").innerText = s;
   }, 1000);
 
-  // Musik kontrol
-  const music = document.getElementById("bgMusic");
-  const btn = document.getElementById("musicBtn");
-  let playing = false;
-  function fadeIn(audio, duration = 3000) {
-    audio.volume = 0;
-    const step = 0.05;
-    const interval = duration / (1 / step);
-    const fadeInterval = setInterval(() => {
-      if (audio.volume < 0.5) audio.volume = Math.min(audio.volume + step, 0.5);
-      else clearInterval(fadeInterval);
-    }, interval);
-  }
-  btn.addEventListener("click", () => {
-    if (playing) { music.pause(); btn.textContent = "▶️"; playing = false; }
-    else { music.play(); fadeIn(music); btn.textContent = "⏸️"; playing = true; }
-  });
+      // Musik kontrol
+    <!-- Musik kontrol otomatis -->
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicBtn");
+    let playing = false;
+    let fadeInterval;
+
+    function fadeIn(audio, duration = 3000) {
+      audio.volume = 0;
+      const step = 0.05;
+      const interval = duration / (1 / step);
+      fadeInterval = setInterval(() => {
+        if (audio.volume < 0.5) {
+          audio.volume = Math.min(audio.volume + step, 0.5);
+        } else {
+          clearInterval(fadeInterval);
+        }
+      }, interval);
+    }
+
+    // 🎵 Coba otomatis main saat halaman dimuat
+    window.addEventListener("load", () => {
+      music.play().then(() => {
+        fadeIn(music);
+        btn.textContent = "⏸️";
+        playing = true;
+      }).catch(() => {
+        console.log("Autoplay diblokir. Musik akan diputar setelah interaksi pertama.");
+      });
+    });
+
+    // Jika autoplay gagal, aktifkan saat pertama kali klik layar
+    document.addEventListener("click", () => {
+      if (!playing) {
+        music.play().then(() => {
+          fadeIn(music);
+          btn.textContent = "⏸️";
+          playing = true;
+        });
+      }
+    }, { once: true });
+
+    // Tombol play/pause
+    btn.addEventListener("click", () => {
+      if (playing) {
+        music.pause();
+        btn.textContent = "▶️";
+        playing = false;
+      } else {
+        music.play();
+        fadeIn(music);
+        btn.textContent = "⏸️";
+        playing = true;
+      }
+    });
+
+    // Berhenti saat klik link Maps
+    document.getElementById("mapsLink").addEventListener("click", () => {
+      if (playing) {
+        music.pause();
+        btn.textContent = "▶️";
+        playing = false;
+      }
+    });
+
+    // Error handling
+    music.addEventListener("error", () => {
+      alert("⚠️ Musik gagal dimuat. Pastikan file MP3 ada di folder yang sama dengan index.html");
+    });
+
 
   // Fitur ucapan + hapus
   const formUcapan = document.getElementById("ucapanForm");
@@ -370,3 +423,4 @@
   </script>
 </body>
 </html>
+
